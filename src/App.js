@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { atom, useRecoilState } from 'recoil'
+import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
 const countState = atom({
   key: 'test/count',
@@ -8,7 +8,7 @@ const countState = atom({
 })
 
 function App() {
-  const [count, setCount] = useRecoilState(countState);
+  // const [count, setCount] = useRecoilState(countState);
 
   return (
     <div className="App">
@@ -17,12 +17,23 @@ function App() {
       </header> */}
       <body>
         <div>
-          <p>カウント: {count}</p>
-          <button onClick={() => setCount((c) => c+1)}>add</button>
+          <ViewCount />
+          <AddCount />
+          {/* <button onClick={() => setCount((c) => c+1)}>add</button> */}
         </div>
       </body>
     </div>
   );
+}
+
+const ViewCount = () => {
+  const count = useRecoilValue(countState);
+  return <p>カウント: {count}</p>
+}
+
+const AddCount = () => {
+  const setCount = useSetRecoilState(countState);
+  return <button onClick={() => setCount((c) => c+1)}>add</button>
 }
 
 export default App;
