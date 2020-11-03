@@ -1,23 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import { atom, useRecoilState } from 'recoil'
+
+const countState = atom({
+  key: 'test/count',
+  default: 0
+})
 
 function App() {
+  const [count, setCount] = useRecoilState(countState);
+
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </header> */}
+      <body>
+        <div>
+          <p>カウント: {count}</p>
+          <button onClick={() => setCount((c) => c+1)}>add</button>
+        </div>
+      </body>
     </div>
   );
 }
