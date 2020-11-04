@@ -22,14 +22,12 @@ function App() {
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header> */}
-      <body>
         <div>
           <ViewCount />
           <ViewIsOdd />
           <AddCount />
           {/* <button onClick={() => setCount((c) => c+1)}>add</button> */}
         </div>
-      </body>
     </div>
   );
 }
